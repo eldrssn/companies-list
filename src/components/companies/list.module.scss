@@ -1,0 +1,5 @@
+.list {
+  li, .list_header {
+    grid-template-columns: min-content 30% 10% auto !important; 
+  }
+}

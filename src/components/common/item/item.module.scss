@@ -1,0 +1,6 @@
+@import '/src/styles/variables.scss';
+
+li.checked {
+  color: $white;
+  background-color: $secondary-color !important;
+}

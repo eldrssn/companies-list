@@ -1,0 +1,12 @@
+@import '/src/styles/variables.scss';
+
+.header_box {
+  padding: 30px 50px;
+  background-color: $secondary-color;
+
+
+  .header {
+    color: $white;
+    font-size: 20px;
+  }
+}
