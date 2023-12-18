@@ -100,20 +100,23 @@ export const CompaniesList = () => {
       handleSelectAll={handleSelectAll}
       isSelectAll={isSelectAll}
       className={styles.list}
+      items={companies}
     >
-      {companies.map((company) => (
-        <Item
-          item={company}
-          key={company.id}
-          isChecked={isSelectAll || selectedCompanies.includes(company.id)}
-          onSelect={handleSelectItem}
-          fields={[
-            company.name,
-            company.employees.length.toString(),
-            company.address,
-          ]}
-        />
-      ))}
+      {({ visibleItems }) =>
+        visibleItems.map((company) => (
+          <Item
+            item={company}
+            key={company.id}
+            isChecked={isSelectAll || selectedCompanies.includes(company.id)}
+            onSelect={handleSelectItem}
+            fields={[
+              (company as Company).name,
+              (company as Company).employees.length.toString(),
+              (company as Company).address,
+            ]}
+          />
+        ))
+      }
     </ListWrapper>
   );
 };

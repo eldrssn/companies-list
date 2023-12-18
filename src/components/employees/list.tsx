@@ -111,17 +111,27 @@ export const EmployeersList = () => {
       selectedCompanies={selectedCompanies}
       handleSelectAll={handleSelectAll}
       isSelectAll={isSelectAll}
+      items={employees}
     >
-      {employees.map((employee) => (
-        <Item
-          item={employee}
-          key={employee.id}
-          isChecked={isSelectAll || selectedItems.includes(employee.id)}
-          onSelect={handleSelectItem}
-          fields={[employee.firstName, employee.lastName, employee.position]}
-        />
-      ))}
-      {!employees.length ? <p>No employeers</p> : <></>}
+      {({ visibleItems }) => (
+        <>
+          {visibleItems.map((employee) => (
+            <Item
+              item={employee}
+              key={employee.id}
+              isChecked={isSelectAll || selectedItems.includes(employee.id)}
+              onSelect={handleSelectItem}
+              fields={[
+                (employee as Employee).firstName,
+                (employee as Employee).lastName,
+                (employee as Employee).position,
+              ]}
+            />
+          ))}
+
+          {!employees.length ? <p>No employeers</p> : <></>}
+        </>
+      )}
     </ListWrapper>
   );
 };
